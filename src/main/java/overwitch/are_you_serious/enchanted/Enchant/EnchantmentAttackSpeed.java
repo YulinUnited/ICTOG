@@ -74,9 +74,9 @@ public class EnchantmentAttackSpeed extends Enchantment {
             System.out.println("  创建新的AttributeModifiers列表");
         }
 
-        // 只移除我们自己的攻击速度修饰符
+        // 移除HELMET_UUID的攻击速度修饰符
         int removed = removeOurAttackSpeedModifiers(attrList);
-        System.out.println("  移除了 " + removed + " 个我们的攻击速度修饰符");
+        System.out.println("  移除了 " + removed + " 个HELMET_UUID的攻击速度修饰符");
 
         // 检查头盔是否有攻击速度附魔
         int itemLevel = getAttackSpeedEnchantmentLevel(stack);
