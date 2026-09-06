@@ -29,7 +29,7 @@ public class EnchantmentLifeDrain extends Enchantment {
     @Override
     public boolean isTreasureEnchantment()
     {
-        return true;
+        return false;
     }
     @Override
     public boolean canApply(ItemStack stack)

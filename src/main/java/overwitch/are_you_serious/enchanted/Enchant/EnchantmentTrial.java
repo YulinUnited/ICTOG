@@ -34,7 +34,7 @@ public class EnchantmentTrial extends Enchantment {
     @Override
     public boolean isTreasureEnchantment()
     {
-        return true;
+        return false;
     }
     @Override
     public void onEntityDamaged(EntityLivingBase attacker, Entity target, int level) {
@@ -45,7 +45,19 @@ public class EnchantmentTrial extends Enchantment {
 
             // 进行伤害计算
             if (!attacker.world.isRemote) {
-                entityLivingBase.attackEntityFrom(DamageSource.causeMobDamage((EntityLivingBase) attacker), damage);
+                if(Float.isNaN(entityLivingBase.getHealth()))
+                {
+                    entityLivingBase.setHealth(20.0f);
+                    //修正无法对NaN造成击杀
+                    if(Float.isNaN(entityLivingBase.getHealth()))
+                    {
+                        entityLivingBase.onDeath(DamageSource.causeMobDamage(entityLivingBase));
+                    }
+                    if(Float.isNaN(entityLivingBase.getMaxHealth())) {
+                        entityLivingBase.setDead();
+                    }
+                }
+                entityLivingBase.attackEntityFrom(DamageSource.causeMobDamage(entityLivingBase).setDamageBypassesArmor(),damage);
             }
         }
     }

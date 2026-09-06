@@ -1,5 +1,5 @@
 package overwitch.are_you_serious.enchanted.Util.EventHate;
-
+/*
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+
 
 @Mod.EventBusSubscriber(modid = "enchanted")
 public class LastStrikeEvent {
@@ -59,11 +60,11 @@ public class LastStrikeEvent {
 
             // 只遍历附近的活着的实体
             List<EntityLivingBase> nearbyEntities = player.world.getEntitiesWithinAABB(EntityLivingBase.class, player.getEntityBoundingBox().grow(2.5D),
-                    entity -> entity != player && entity.isEntityAlive() && player.getDistance(entity) <= 3.5D
+                    entity -> entity != player && entity.isEntityAlive() && player.getDistance(entity) <= 6.5D
             &&!entity.isOnSameTeam(player));
 
             for (EntityLivingBase target : nearbyEntities) {
-                float sweepDamage = 6.0F; // 固定伤害
+                float sweepDamage = 10.0F; // 固定伤害
                 target.attackEntityFrom(DamageSource.causePlayerDamage(player), sweepDamage);
             }
 
@@ -85,4 +86,4 @@ public class LastStrikeEvent {
         //return (currentTime - lastStrikeActivationTime.get(player.getUniqueID())) <= LAST_STRIKE_DURATION;
         return isActive;
     }
-}
+}*/

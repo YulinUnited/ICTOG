@@ -12,5 +12,15 @@ public class ModEnchantments {
     public static final Enchantment DEATH_PREVENTION=null;
     @GameRegistry.ObjectHolder("enchanted:ExperienceSmelting")
     public static  final  Enchantment EXPERIENCE_SMELTING=null;
+    @GameRegistry.ObjectHolder("enchanted:LifeDrain")
+    public static final Enchantment LifeDrain = null;
+    @GameRegistry.ObjectHolder("enchanted:ExperienceAccumulation")
+    public static final Enchantment EXPERIENCEACCUMULATION = null;
+    @GameRegistry.ObjectHolder("enchanted:StrikeAtTheCriticalMoment")
+    public static final Enchantment STRIKEATTHECRITICALMOMENT =null;
+    @GameRegistry.ObjectHolder("enchanted:UltimateRedemption")
+    public static final Enchantment ULTIMATEREDEMPTION = null;
+    @GameRegistry.ObjectHolder("enchanted:UltimateRepair")
+    public static final Enchantment ULTIMATEREPAIR = null;
 
 }

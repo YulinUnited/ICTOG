@@ -49,7 +49,7 @@ import java.util.function.Supplier;
 @Mod(modid = EnchantedMod.MODID, version = EnchantedMod.VERSION)
 public class EnchantedMod {
 	public static final String MODID = "enchanted";
-	public static final String VERSION = "1.2.0";
+	public static final String VERSION = "1.2.3";
 	public static final SimpleNetworkWrapper PACKET_HANDLER = NetworkRegistry.INSTANCE.newSimpleChannel("enchanted:a");
 	@SidedProxy(clientSide = "overwitch.are_you_serious.enchanted.ClientProxyEnchantedMod", serverSide = "overwitch.are_you_serious.enchanted.ServerProxyEnchantedMod")
 	public static IProxyEnchantedMod proxy;
@@ -148,5 +148,11 @@ public class EnchantedMod {
 		ForgeRegistries.ENCHANTMENTS.register(new EnchantmentSuperSweepingEdgets(Enchantment.Rarity.UNCOMMON));
 		ForgeRegistries.ENCHANTMENTS.register(new EnchantmentLifeDrain());
 		ForgeRegistries.ENCHANTMENTS.register(new EnchantmentExperienceSmelting());
+		ForgeRegistries.ENCHANTMENTS.register(new UltimateExperienceDamage());
+		ForgeRegistries.ENCHANTMENTS.register(new ExperienceAccumulation());
+		ForgeRegistries.ENCHANTMENTS.register(new UltimateExecution());
+		ForgeRegistries.ENCHANTMENTS.register(new UltimateRedemption());
+		ForgeRegistries.ENCHANTMENTS.register(new Enchantment_Strike_At_The_Critical_Moment());
+		ForgeRegistries.ENCHANTMENTS.register(new UltimateRepair());
 	}
 }

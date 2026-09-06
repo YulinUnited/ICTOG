@@ -36,7 +36,7 @@ public class EnchantmentExperienceRedemption extends Enchantment {
     @Override
     public boolean isTreasureEnchantment()
     {
-        return super.isTreasureEnchantment();
+        return false;
     }
     @Override
     public boolean isCurse()
@@ -63,10 +63,11 @@ public class EnchantmentExperienceRedemption extends Enchantment {
             if (player.experienceLevel >= requiredXP) {
                 // 玩家有足够的经验值，取消死亡事件并消耗经验
                 player.addExperienceLevel(-requiredXP); // 消耗经验
-                player.setHealth(6.0F);
+                player.setHealth(20.0F);
                 event.setCanceled(true); // 取消死亡事件
                 player.sendMessage(new TextComponentString("警告：侦测到死亡，现消耗经验值助您复活！"));
             }
         }
+
     }
 }

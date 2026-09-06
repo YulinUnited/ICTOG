@@ -23,11 +23,14 @@ public class EnchantmentExperienceDamage extends Enchantment
     {
         return super.getMaxLevel();
     }
+
     @Override
     public void onEntityDamaged(EntityLivingBase attacker, Entity target, int level) {
-        if (attacker instanceof EntityPlayer) {
+        if (attacker instanceof EntityPlayer)
+        {
             EntityPlayer player = (EntityPlayer) attacker;
-            int experience = player.experienceLevel;  // 获取玩家的经验等级
+            //将int转换为long，适应玩家经验等级
+            long experience = player.experienceLevel;  // 获取玩家的经验等级
             float damage = experience * 2.0f;  // 经验转化为伤害
 
             // 对目标类型进行判断，减少伤害
@@ -35,9 +38,19 @@ public class EnchantmentExperienceDamage extends Enchantment
                 damage *= 0.5f;  // 女巫和唤魔者伤害削减50%
             }
 
-            // 进行魔法伤害计算，伤害无视护甲
-            if (!attacker.world.isRemote) {
-                target.attackEntityFrom(DamageSource.MAGIC, damage);
+            // 进行新的伤害来源计算，伤害无视护甲
+            if (!attacker.world.isRemote)
+            {
+                if(target instanceof EntityLivingBase)
+                {
+                    EntityLivingBase livingBase =(EntityLivingBase) target;
+                    if (Float.isNaN(livingBase.getHealth())&&Float.isNaN(livingBase.getMaxHealth()))
+                    {
+                        livingBase.onDeath(DamageSource.OUT_OF_WORLD);
+                    }
+                    livingBase.attackEntityFrom(new DamageSource("ExperienceDamage").setDamageBypassesArmor(),damage);
+                }
+                //target.attackEntityFrom(new DamageSource("ExperienceDamage").setDamageBypassesArmor(), damage);
             }
         }
     }
@@ -49,7 +62,7 @@ public class EnchantmentExperienceDamage extends Enchantment
     @Override
     public boolean isTreasureEnchantment()
     {
-        return true;
+        return false;
     }
     @Override
     public String getName()
